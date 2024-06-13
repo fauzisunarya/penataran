@@ -1,20 +1,16 @@
-describe("Login Positive", () => {
-    Cypress.on('uncaught:exception', (err, runnable) => {
-        return false})
-    it("passes", () => {
-
-      cy.visit("http://10.60.176.23/ebis/").wait(2000);
-
-  
-      // Input usercode and password
-      cy.get('input[type="text"]').type("admin");
-      cy.get('input[type="password"]').type("NEURON098");
-  
-      // Click the login button
-      cy.get("#loginBtn").contains("Login").click();
-      cy.wait(8000);
-  
-      
-    });
+describe("Login Positif", () => {
+  Cypress.on("uncaught:exception", (err, runnable) => {
+    return false;
   });
-  
+  it("passes", () => {
+    cy.visit(Cypress.env("baseUrl")).wait(2000);
+
+    // Input usercode and password
+    cy.get("#user-name").type(Cypress.env("username"));
+    cy.get("#password").type(Cypress.env("password"));
+
+    // Click the login button
+    cy.get("#login-button").click();
+    cy.wait(8000);
+  });
+});
